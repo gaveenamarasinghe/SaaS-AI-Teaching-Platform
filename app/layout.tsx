@@ -19,10 +19,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
   return (
     <html lang="en">
       <body className={`${bricolage.variable} antialiased`}>
-        <ClerkProvider appearance={{ variables: { colorPrimary: '#fe5933' }} }>
+        <ClerkProvider 
+          publishableKey={publishableKey}
+          appearance={{ variables: { colorPrimary: '#fe5933' }} }
+        >
           <Navbar />
           {children}
         </ClerkProvider>
